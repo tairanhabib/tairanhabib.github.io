@@ -28,7 +28,7 @@
   var WIDTHS = [1, 3, 5];
 
   var page = document.body.dataset.page;
-  var file = page === "projects" ? "projects.bmp" : "tairan_habib.bmp";
+  var file = page === "about" ? "tairan_habib.bmp" : page + ".bmp";
   var main = document.querySelector("main");
 
   function nav(href, label, key) {
@@ -43,6 +43,7 @@
     '<span class="controls"><button data-act="min" aria-label="Minimize">_</button><button data-act="max" aria-label="Full screen">□</button><button data-act="close" aria-label="Close">×</button></span></div>' +
     '<nav class="menubar">' +
       nav("index.html", "About", "about") +
+      nav("experience.html", "Experience", "experience") +
       nav("projects.html", "Projects", "projects") +
       '<span class="spacer"></span><button data-act="clear">Clear Image</button>' +
     "</nav>" +
