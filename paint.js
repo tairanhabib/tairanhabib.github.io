@@ -28,7 +28,7 @@
   var WIDTHS = [1, 3, 5];
 
   var page = document.body.dataset.page;
-  var file = page === "about" ? "tairan_habib.bmp" : page + ".bmp";
+  var file = page === "about" ? "tairan_habib.bmp" : page === "draw" ? "untitled.bmp" : page + ".bmp";
   var main = document.querySelector("main");
 
   function nav(href, label, key) {
@@ -45,7 +45,8 @@
       nav("index.html", "About", "about") +
       nav("experience.html", "Experience", "experience") +
       nav("projects.html", "Projects", "projects") +
-      '<span class="spacer"></span><button data-act="clear">Clear Image</button>' +
+      nav("draw.html", "Draw", "draw") +
+      '<span class="spacer"></span>' + (page === "draw" ? '<button data-act="save">Save Image</button>' : "") + '<button data-act="clear">Clear Image</button>' +
     "</nav>" +
     '<div class="workspace"><div class="toolbox">' +
       TOOLS.map(function (t) { return '<button data-tool="' + t[0] + '" title="' + t[2].split(":")[0] + '">' + t[1] + "</button>"; }).join("") +
@@ -412,6 +413,19 @@
       else if (document.documentElement.requestFullscreen) document.documentElement.requestFullscreen();
     }
   });
+  var saveBtn = win.querySelector('[data-act="save"]');
+  if (saveBtn) saveBtn.addEventListener("click", function () {
+    var out = document.createElement("canvas");
+    out.width = layer.width; out.height = layer.height;
+    var o = out.getContext("2d");
+    o.fillStyle = getComputedStyle(main).backgroundColor || "#ffffff";
+    o.fillRect(0, 0, out.width, out.height);
+    o.drawImage(layer, 0, 0);
+    var a = document.createElement("a");
+    a.download = "untitled.png";
+    a.href = out.toDataURL("image/png");
+    a.click();
+  });
   win.querySelector('[data-act="clear"]').addEventListener("click", function () {
     save();
     ctx.clearRect(0, 0, layer.width, layer.height);
@@ -419,7 +433,8 @@
     main.style.zoom = state.zoom = 1;
   });
 
-  setTool("select");
+  setTool(page === "draw" ? "pencil" : "select");
+  state.prev = page === "draw" ? "pencil" : null;
   setWidth(0);
   showColors();
 })();

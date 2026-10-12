@@ -299,3 +299,6 @@ ul.tags li { border: 2px solid var(--ink); padding: 4px 14px; font-size: 16px; }
   .intro .right h1 { text-align: center; }
   .intro .right .sub { text-align: center; }
 }
+
+/* blank drawing page: the whole canvas is paper */
+.page-draw .canvas { padding: 0; }
