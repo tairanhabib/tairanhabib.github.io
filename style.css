@@ -128,7 +128,21 @@ body {
   min-height: 100%;
 }
 /* keep lines a readable length on wide screens */
-.canvas > :not(.layer) { max-width: 1000px; }
+.canvas > :not(.layer) { max-width: 860px; margin-left: auto; margin-right: auto; }
+.canvas h1, .canvas h2, .lead, .canvas > p { text-align: center; }
+.hero { justify-content: center; }
+.links, ul.tags { justify-content: center; }
+
+/* project pictures: drop a file into images/ with the matching name */
+.shot {
+  display: block;
+  width: 100%;
+  max-height: 360px;
+  object-fit: cover;
+  margin-bottom: 10px;
+  border: 1px dashed #000;
+  padding: 4px;
+}
 .layer {
   position: absolute;
   top: 0;
