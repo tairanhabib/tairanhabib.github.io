@@ -173,8 +173,6 @@ body {
   .page-projects .item { display: block; }
   .page-projects .item > .shot { margin-bottom: 12px; }
 }
-}
-}
 .layer {
   position: absolute;
   top: 0;
@@ -182,6 +180,8 @@ body {
   pointer-events: none;
 }
 .drawing .layer { pointer-events: auto; touch-action: none; cursor: crosshair; }
+.canvas-frame { overscroll-behavior: contain; -webkit-overflow-scrolling: touch; }
+html, body { overscroll-behavior: none; }
 
 /* palette */
 .palette { display: flex; align-items: center; gap: 6px; padding: 6px 2px 4px; flex: none; }
@@ -302,7 +302,9 @@ ul.tags li { border: 2px solid var(--ink); padding: 4px 14px; font-size: 16px; }
 
 @media (max-width: 640px) {
   .workspace { flex-direction: column; }
-  .toolbox { width: auto; grid-template-columns: repeat(8, 1fr); grid-auto-rows: 28px; }
+  .toolbox { width: auto; grid-template-columns: repeat(8, 1fr); grid-auto-rows: 36px; }
+  .toolbox button { font-size: 17px; }
+  .swatches { grid-auto-rows: 20px; }
   .toolbox .well { display: none; }
   .controls button:nth-child(2), .statusbar div:last-child { display: none; }
   .canvas { padding: 20px 16px 28px; }

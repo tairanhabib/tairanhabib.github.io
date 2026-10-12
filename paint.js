@@ -71,27 +71,41 @@
   var xy = win.querySelector(".xy");
 
   var state = { tool: "select", fg: "#000000", bg: "#ffffff", w: 1, zoom: 1 };
-  var dpr = Math.max(1, window.devicePixelRatio || 1);
+  var touch = window.matchMedia && window.matchMedia("(pointer: coarse)").matches;
+  // keep the drawing layer small enough for phones: big canvases (and undo copies of them)
+  // run phones out of memory and the tab goes blank
+  var MAX_PX = touch ? 3e6 : 6e6;
+  var UNDO_MAX = touch ? 4 : 12;
+  var dpr = Math.min(2, Math.max(1, window.devicePixelRatio || 1));
+  var built = false, hasInk = false;
+  layer.width = layer.height = 0;
 
-  // ----- layer sizing -----
+  // ----- layer sizing (only built once someone picks a drawing tool) -----
   function sizeLayer() {
     var w = main.clientWidth, h = main.scrollHeight;
-    if (layer.width === Math.round(w * dpr) && layer.height === Math.round(h * dpr)) return;
+    // lower the resolution (never the size) so long pages stay under the memory cap
+    var nd = Math.max(0.5, Math.min(dpr, Math.sqrt(MAX_PX / (w * h))));
+    built = true;
+    if (layer.width === Math.round(w * nd) && layer.height === Math.round(h * nd)) return;
     var old = null;
-    if (layer.width && layer.height) {
+    if (hasInk) {
       old = document.createElement("canvas");
       old.width = layer.width; old.height = layer.height;
       old.getContext("2d").drawImage(layer, 0, 0);
     }
+    var scale = nd / dpr;
+    dpr = nd;
     layer.width = Math.round(w * dpr);
     layer.height = Math.round(h * dpr);
     layer.style.width = w + "px";
     layer.style.height = h + "px";
-    if (old) ctx.drawImage(old, 0, 0);
+    if (old) ctx.drawImage(old, 0, 0, old.width * scale, old.height * scale);
+    if (scale !== 1 && undo) undo.length = 0;
+    hasInk = true;
   }
-  sizeLayer();
-  window.addEventListener("resize", sizeLayer);
-  window.addEventListener("load", sizeLayer);
+  function sizeIfUsed() { if (built) sizeLayer(); }
+  window.addEventListener("resize", sizeIfUsed);
+  window.addEventListener("load", sizeIfUsed);
 
   function pos(e) {
     var r = layer.getBoundingClientRect();
@@ -102,7 +116,7 @@
   var undo = [];
   function save() {
     undo.push({ img: ctx.getImageData(0, 0, layer.width, layer.height), paper: main.style.background });
-    if (undo.length > 25) undo.shift();
+    if (undo.length > UNDO_MAX) undo.shift();
   }
   document.addEventListener("keydown", function (e) {
     if ((e.ctrlKey || e.metaKey) && e.key.toLowerCase() === "z" && undo.length) {
@@ -120,8 +134,9 @@
     poly = null; curve = null;
     win.querySelectorAll("[data-tool]").forEach(function (b) { b.classList.toggle("on", b.dataset.tool === name); });
     main.classList.toggle("drawing", !BROWSE[name]);
+    if (!BROWSE[name]) sizeLayer();
     var t = TOOLS.filter(function (t) { return t[0] === name; })[0];
-    hint.textContent = t[2];
+    hint.textContent = t[2] + (touch && !BROWSE[name] ? " (Pick Select ⬚ to scroll.)" : "");
   }
   function setWidth(i) {
     state.w = i;
@@ -285,6 +300,10 @@
   }
 
   layer.addEventListener("contextmenu", function (e) { e.preventDefault(); });
+  // on phones, a finger drag on the canvas should draw, never scroll the page
+  function noScroll(e) { if (main.classList.contains("drawing")) e.preventDefault(); }
+  layer.addEventListener("touchstart", noScroll, { passive: false });
+  layer.addEventListener("touchmove", noScroll, { passive: false });
 
   layer.addEventListener("pointerdown", function (e) {
     sizeLayer();
