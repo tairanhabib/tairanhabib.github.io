@@ -4,8 +4,8 @@
   --hi: #ffffff;
   --shadow: #808080;
   --dark: #000000;
-  --title1: #000080;
-  --title2: #1084d0;
+  --title1: var(--ink);
+  --title2: color-mix(in srgb, var(--ink), #fff 45%);
   --ink: #657a62;
 }
 
@@ -32,6 +32,7 @@ body {
 }
 
 .titlebar {
+  background: var(--title1);
   background: linear-gradient(90deg, var(--title1), var(--title2));
   color: #fff;
   font-weight: bold;
