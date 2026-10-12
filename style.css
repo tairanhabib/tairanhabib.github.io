@@ -344,3 +344,5 @@ ul.tags li { border: 2px solid var(--ink); padding: 4px 14px; font-size: 16px; }
 
 /* project title row: name left, date right */
 .page-projects .info .meta { align-items: baseline; }
+.page-projects .item > a.shot img { display: block; width: 100%; height: auto; }
+.page-projects .item > a.shot { cursor: zoom-in; }
