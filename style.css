@@ -232,7 +232,7 @@ body {
 .canvas h3 { font-size: 18px; margin: 0; }
 .canvas p { margin: 0 0 12px; }
 .canvas a { color: var(--ink); }
-.lead { font-size: 19px; }
+.lead { font-size: 17px; }
 
 .links { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 18px; }
 .btn {
@@ -273,15 +273,28 @@ ul.tags li { border: 2px solid var(--ink); padding: 4px 14px; font-size: 16px; }
   .swatches { grid-template-columns: repeat(14, 1fr); flex: 1; }
 }
 
-/* landing page: center the content in the window so there's no empty space below */
+/* landing page: big photo + links on the left, intro on the right, centered in the window */
 .page-about .canvas { display: flex; flex-direction: column; justify-content: center; }
-.page-about .canvas > :not(.layer) { width: 100%; }
-.page-about .canvas h1 { font-size: 52px; }
-.page-about .photo img { width: 240px; height: 240px; }
+.intro { display: flex; align-items: center; justify-content: center; gap: 56px; width: 100%; }
+.intro .left { flex: none; display: flex; flex-direction: column; align-items: center; }
+.intro .photo img { width: min(440px, 34vw); height: min(440px, 34vw); }
+@media (max-width: 900px) {
+  .intro { flex-direction: column; gap: 24px; }
+  .intro .photo img { width: 320px; height: 320px; }
+  .intro .right h1, .intro .right .sub { text-align: center; }
+}
+.intro .links { justify-content: center; margin: 16px 0 0; }
+.intro .right { flex: 1; max-width: 640px; }
+.intro .right h1 { font-size: 52px; text-align: left; }
+.intro .right .sub { margin: 4px 0 22px; font-size: 17px; }
+.intro .right p { text-align: left; margin-bottom: 18px; }
 .item { margin-bottom: 28px; }
 
 @media (max-width: 640px) {
   .canvas { font-size: 16px; padding: 22px 16px 28px; }
-  .page-about .canvas h1, .canvas h1 { font-size: 34px; }
-  .page-about .photo img { width: 180px; height: 180px; }
+  .canvas h1, .intro .right h1 { font-size: 34px; }
+  .intro { flex-direction: column; gap: 24px; }
+  .intro .photo img { width: 260px; height: 260px; }
+  .intro .right h1 { text-align: center; }
+  .intro .right .sub { text-align: center; }
 }
