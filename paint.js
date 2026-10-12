@@ -45,7 +45,7 @@
       nav("index.html", "About", "about") +
       nav("experience.html", "Experience", "experience") +
       nav("projects.html", "Projects", "projects") +
-      nav("draw.html", "Draw", "draw") +
+      nav("draw.html", "Doodle", "draw") +
       '<span class="spacer"></span>' + (page === "draw" ? '<button data-act="save">Save Image</button>' : "") + '<button data-act="clear">Clear Image</button>' +
     "</nav>" +
     '<div class="workspace"><div class="toolbox">' +
