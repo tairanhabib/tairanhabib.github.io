@@ -115,19 +115,20 @@ body {
 .canvas-frame {
   flex: 1;
   min-width: 0;
-  background: var(--shadow);
+  background: #fff;
   border: 2px solid;
   border-color: var(--shadow) var(--hi) var(--hi) var(--shadow);
-  padding: 6px;
   overflow: auto;
 }
 .canvas {
   position: relative;
   background: #fff;
-  padding: 28px 32px 40px;
+  padding: 28px 40px 40px;
   font: 15px/1.6 Verdana, Tahoma, sans-serif;
-  max-width: 760px;
+  min-height: 100%;
 }
+/* keep lines a readable length on wide screens */
+.canvas > :not(.layer) { max-width: 1000px; }
 .layer {
   position: absolute;
   top: 0;
