@@ -275,16 +275,18 @@ ul.tags li { border: 2px solid var(--ink); padding: 4px 14px; font-size: 16px; }
 
 /* landing page: big photo + links on the left, intro on the right, centered in the window */
 .page-about .canvas { display: flex; flex-direction: column; justify-content: center; }
-.intro { display: flex; align-items: center; justify-content: center; gap: 56px; width: 100%; }
-.intro .left { flex: none; display: flex; flex-direction: column; align-items: center; }
-.intro .photo img { width: min(440px, 34vw); height: min(440px, 34vw); }
+.page-about .canvas > .intro { max-width: none; }
+.intro { display: flex; align-items: center; justify-content: flex-start; gap: 56px; width: 100%; }
+.intro .left { flex: none; display: flex; flex-direction: column; align-items: stretch; }
+.intro .photo img { width: min(560px, 42vw, 70vh); height: min(560px, 42vw, 70vh); }
 @media (max-width: 900px) {
   .intro { flex-direction: column; gap: 24px; }
   .intro .photo img { width: 320px; height: 320px; }
   .intro .right h1, .intro .right .sub { text-align: center; }
 }
-.intro .links { justify-content: center; margin: 16px 0 0; }
-.intro .right { flex: 1; max-width: 640px; }
+.intro .links { margin: 8px 0 0; gap: 6px; flex-wrap: nowrap; }
+.intro .links .btn { flex: 1; text-align: center; padding-left: 0; padding-right: 0; }
+.intro .right { flex: 1; max-width: 680px; }
 .intro .right h1 { font-size: 52px; text-align: left; }
 .intro .right .sub { margin: 4px 0 22px; font-size: 17px; }
 .intro .right p { text-align: left; margin-bottom: 18px; }
