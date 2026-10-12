@@ -136,13 +136,16 @@ body {
 /* project pictures: drop a file into images/ with the matching name */
 .shot {
   display: block;
-  width: 100%;
-  max-height: 360px;
-  object-fit: cover;
-  margin-bottom: 10px;
+  height: 320px;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  margin-bottom: 12px;
   border: 1px dashed #000;
   padding: 4px;
+  background: #fff;
 }
+@media (max-width: 640px) { .shot { height: auto; max-height: 300px; } }
 .layer {
   position: absolute;
   top: 0;
