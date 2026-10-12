@@ -57,6 +57,7 @@
     '<div class="statusbar"><div class="hint"></div><div class="xy">&nbsp;</div></div>';
 
   main.classList.add("canvas");
+  document.body.classList.add("page-" + page);
   var frame = win.querySelector(".canvas-frame");
   frame.appendChild(main);
   document.body.appendChild(win);
