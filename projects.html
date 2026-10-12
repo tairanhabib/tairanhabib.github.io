@@ -16,21 +16,21 @@
     <h2>Robotics &amp; Hardware</h2>
 
     <div class="item">
-      <img class="shot" src="images/forklift.jpg" alt="Forklift Teleoperation Retrofit" loading="lazy" onerror="this.remove()">
+      <img class="shot" src="images/forklift.jpg" alt="Forklift teleoperation dashboard with live camera feeds and controls" loading="lazy" onerror="this.remove()">
       <h3>Forklift Teleoperation Retrofit</h3>
       <div class="sub">KiCad · RP2040 · ROS 2 · WebRTC · C++ · Python</div>
       <p>Remote control of a Raymond reach truck in Mexico City from Massachusetts without touching its controller. I designed a 2-layer control board with a watchdog-gated deadman relay, fail-safe relays, and isolated I/O, plus a multi-camera 1080p video pipeline and a heartbeat that stops the truck if the link degrades.</p>
     </div>
 
     <div class="item">
-      <img class="shot" src="images/big-crane.jpg" alt="Big Crane" loading="lazy" onerror="this.remove()">
+      <img class="shot" src="images/big-crane.jpg" alt="Big Crane vision control running with dual-camera tracking" loading="lazy" onerror="this.remove()">
       <h3>Big Crane</h3>
       <div class="sub">C++ (Arduino) · Python · OpenCV · Pneumatics</div>
       <p>A soft-robotics crane in the d'Arbeloff Lab. One Arduino Mega runs 5 closed-loop brushless motor channels and 6 pneumatic regulators at 100 Hz. Dual-camera vision tracks the vine-robot tip, and online Jacobian estimation steers it.</p>
     </div>
 
     <div class="item">
-      <img class="shot" src="images/tactile-gripper.jpg" alt="Tactile Gripper" loading="lazy" onerror="this.remove()">
+      <img class="shot" src="images/tactile-gripper.jpg" alt="Two-finger tactile gripper prototype" loading="lazy" onerror="this.remove()">
       <h3>Tactile Gripper</h3>
       <div class="sub">In progress · Teensy · C/C++ · Python · Compressive sensing</div>
       <p>A two-finger tactile gripper for the robot arm in MIT CSAIL's Improbable AI Lab. It uses compressive sensing to read a large tactile array, and its firmware streams the touch data in a format ready for training manipulation policies from human demonstrations.</p>
@@ -53,10 +53,17 @@
     <h2>Software</h2>
 
     <div class="item">
-      <img class="shot" src="images/burger-bike.jpg" alt="The Burger Bike" loading="lazy" onerror="this.remove()">
-      <h3>The Burger Bike</h3>
+      <img class="shot" src="images/neurobridge.jpg" alt="NeuroBridge clinical language dashboard" loading="lazy" onerror="this.remove()">
+      <h3>NeuroBridge</h3>
+      <div class="sub">React · Vite · Tailwind CSS · Claude API · Web Speech API</div>
+      <p>A clinical language workspace for immigrant dementia care. It transcribes live speech in English, Spanish, or Bengali and uses Claude to produce an English translation, flag dementia markers like anomia and code-switching, and infer a 1–10 stress score. A hard-coded crisis override tells clinicians to switch to a human protocol when distress is high. <a href="https://github.com/tairanhabib/neurobridge-dashbaord">Code</a></p>
+    </div>
+
+    <div class="item">
+      <img class="shot" src="images/burgered-bike.jpg" alt="Burgered Bike" loading="lazy" onerror="this.remove()">
+      <h3>Burgered Bike</h3>
       <div class="sub">React · Vite · Supabase · Vercel</div>
-      <p>A public Boston art scavenger hunt with a live sighting map, badges, and QR-code submissions.</p>
+      <p>A public Boston art scavenger hunt with a live sighting map, badges, and QR-code submissions. <a href="https://github.com/tairanhabib/burgered-bike">Code</a></p>
     </div>
 
     <div class="item">
