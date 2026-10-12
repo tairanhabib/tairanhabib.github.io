@@ -145,20 +145,41 @@ body {
   padding: 4px;
   background: #fff;
 }
-/* projects with a picture: picture on the left, text beside it */
+/* projects: text on the left, same-size picture box on the right, every row identical */
 .item:has(> .shot) {
   display: grid;
-  grid-template-columns: minmax(0, 380px) 1fr;
-  column-gap: 28px;
-  align-items: start;
+  grid-template-columns: 1fr 380px;
+  column-gap: 32px;
+  align-items: center;
+  padding-bottom: 28px;
+  margin-bottom: 28px;
+  border-bottom: 1px dashed #ccc;
 }
-.item:has(> .shot) > .shot { grid-row: 1 / span 4; width: auto; max-width: 100%; height: auto; max-height: 300px; margin: 0; }
-.item:has(> .shot) > :not(.shot) { grid-column: 2; }
-.item:has(> .shot) > .video { width: 100%; max-height: none; aspect-ratio: 16 / 9; height: auto; }
-@media (max-width: 760px) {
+.item:has(> .shot):last-child, .item:has(> .shot):has(+ h2) { border-bottom: 0; }
+.item:has(> .shot) > .shot {
+  grid-column: 2;
+  grid-row: 1;
+  width: 380px;
+  height: auto;
+  max-height: none;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin: 0;
+  background: #fff;
+}
+.item:has(> .shot) > .info { grid-column: 1; grid-row: 1; text-align: left; }
+.shot.placeholder {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: repeating-conic-gradient(#f2f2f2 0 25%, #fff 0 50%) 0 0 / 16px 16px;
+  color: #999;
+  font: 13px Tahoma, sans-serif;
+}
+@media (max-width: 860px) {
   .item:has(> .shot) { display: block; }
-  .item:has(> .shot) > .shot { margin-bottom: 12px; }
-  .item:has(> .shot) > .video { width: 100%; }
+  .item:has(> .shot) > .shot { width: 100%; margin-bottom: 12px; }
+}
 }
 .layer {
   position: absolute;
