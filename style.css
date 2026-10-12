@@ -221,6 +221,10 @@ body {
 
 /* content inside the canvas */
 .canvas h1 { color: var(--ink); font-size: 40px; margin: 0 0 6px; line-height: 1.2; }
+/* Experience / Projects: centered title, intro line evenly spaced between title and first section */
+.canvas > h1, .canvas > h2, .canvas > .lead { text-align: center; }
+.canvas > h1 { margin-bottom: 22px; }
+.canvas > .lead + h2 { margin-top: 17px; }
 .canvas h2 {
   color: var(--ink);
   font-size: 22px;
