@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects · Tairan Habib</title>
   <meta name="description" content="Projects by Tairan Habib: robotics, PCBs, web apps, and more.">
-  <link rel="stylesheet" href="style.css?v=21">
+  <link rel="stylesheet" href="style.css?v=22">
 </head>
 <body data-page="projects">
 
@@ -18,7 +18,7 @@
     <div class="item">
       <img class="shot" src="images/forklift.jpg" alt="Forklift teleoperation dashboard with live camera feeds and controls">
       <div class="info">
-        <h3>Forklift Teleoperation Retrofit</h3>
+        <div class="meta"><h3>Forklift Teleoperation Retrofit</h3><span class="date">Summer 2026</span></div>
         <div class="sub">KiCad · RP2040 · ROS 2 · WebRTC · C++ · Python</div>
         <p>Remote control of a Raymond reach truck in Mexico City from Massachusetts without touching its controller. I designed a 2-layer control board with a watchdog-gated deadman relay, fail-safe relays, and isolated I/O, plus a multi-camera 1080p video pipeline and a heartbeat that stops the truck if the link degrades.</p>
       </div>
@@ -26,7 +26,7 @@
     <div class="item">
       <iframe class="shot video" src="https://www.youtube-nocookie.com/embed/f1Jdj6F1KLM" title="Big Crane demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="info">
-        <h3>Big Crane</h3>
+        <div class="meta"><h3>Big Crane</h3><span class="date">Dec 2025 – Aug 2026</span></div>
         <div class="sub">C++ (Arduino) · Python · OpenCV · Pneumatics</div>
         <p>A soft-robotics crane in the d'Arbeloff Lab. One Arduino Mega runs 5 closed-loop brushless motor channels and 6 pneumatic regulators at 100 Hz. Dual-camera vision tracks the vine-robot tip, and online Jacobian estimation steers it.</p>
       </div>
@@ -34,7 +34,7 @@
     <div class="item">
       <img class="shot" src="images/tactile-gripper.jpg" alt="Two-finger tactile gripper prototype">
       <div class="info">
-        <h3>Tactile Gripper</h3>
+        <div class="meta"><h3>Tactile Gripper</h3><span class="date">Sep 2026 – now</span></div>
         <div class="sub">In progress · Teensy · C/C++ · Python · Compressive sensing</div>
         <p>A two-finger tactile gripper I'm building for the robot arm in MIT CSAIL's Improbable AI Lab. It will use compressive sensing to read a large tactile array, and its firmware will stream the touch data in a format ready for training manipulation policies from human demonstrations.</p>
       </div>
@@ -42,24 +42,34 @@
     <div class="item">
       <img class="shot" src="images/robot-arm.jpg" alt="EEZYbotARM MK2 robot arm on a desk">
       <div class="info">
-        <h3>EEZYbotARM MK2</h3>
+        <div class="meta"><h3>EEZYbotARM MK2</h3><span class="date">2026</span></div>
         <div class="sub">Arduino · Python · 3D printing</div>
         <p>A 4-axis servo-driven robot arm with gripper, built and iterated on my own printers.</p>
       </div>
     </div>
     <div class="item">
       <div class="info">
-        <h3>Parametric CAD Designs</h3>
+        <div class="meta"><h3>Parametric CAD Designs</h3><span class="date">2026</span></div>
         <div class="sub">OpenSCAD · CadQuery · PETG/ASA</div>
         <p>Code-defined printable parts: a blow-dryer diffuser, a snap-lid watercolor palette, and a tin organizer insert.</p>
       </div>
     </div>
+    <h2>Fabrication</h2>
+
+    <div class="item">
+      <div class="info">
+        <div class="meta"><h3>Multi-Grip Swiss Bar</h3><span class="date">2018 – 2021</span></div>
+        <div class="sub">Woodworking · PVC · Load testing</div>
+        <p>A custom multi-grip barbell with several neutral hand positions, designed for my dad, who has arthritis. Wood framing gives it structure and PVC inserts make the grips, and I stress-tested it well past normal use, up to about 240 lbs.</p>
+      </div>
+    </div>
+
     <h2>Software</h2>
 
     <div class="item">
       <img class="shot" src="images/neurobridge.jpg" alt="NeuroBridge clinical language dashboard">
       <div class="info">
-        <h3>NeuroBridge</h3>
+        <div class="meta"><h3>NeuroBridge</h3><span class="date">May 2026</span></div>
         <div class="sub">React · Vite · Tailwind CSS · Claude API · Web Speech API</div>
         <p>A clinical language workspace for immigrant dementia care. It transcribes live speech in English, Spanish, or Bengali and uses Claude to produce an English translation, flag dementia markers like anomia and code-switching, and infer a 1–10 stress score. A hard-coded crisis override tells clinicians to switch to a human protocol when distress is high. <a href="https://github.com/tairanhabib/neurobridge-dashbaord">Code</a></p>
       </div>
@@ -67,14 +77,14 @@
     <div class="item">
       <img class="shot" src="images/burgered-bike.jpg" alt="Burgered Bike">
       <div class="info">
-        <h3>Burgered Bike</h3>
+        <div class="meta"><h3>Burgered Bike</h3><span class="date">Jun 2026</span></div>
         <div class="sub">React · Vite · Supabase · Vercel</div>
         <p>A public Boston art scavenger hunt with a live sighting map, badges, and QR-code submissions. <a href="https://burgered-bike.vercel.app" target="_blank" rel="noopener">Visit site</a> · <a href="https://github.com/tairanhabib/burgered-bike" target="_blank" rel="noopener">Code</a></p>
       </div>
     </div>
     <div class="item">
       <div class="info">
-        <h3>Text-Based AI Assistant</h3>
+        <div class="meta"><h3>Text-Based AI Assistant</h3><span class="date">Fall 2026 – now</span></div>
         <div class="sub">In progress · Self-hosted</div>
         <p>An assistant that manages my calendar, to-dos, reminders, and syllabus deadlines over text message.</p>
       </div>
@@ -83,12 +93,12 @@
 
     <div class="item">
       <div class="info">
-        <h3>Machine Learning Self-Study</h3>
+        <div class="meta"><h3>Machine Learning Self-Study</h3><span class="date">2026 – now</span></div>
         <div class="sub">PyTorch</div>
         <p>Trained a CIFAR-10 classifier on an Apple GPU and working through micrograd and the robot-learning papers from RT-1 to OpenVLA.</p>
       </div>
     </div>
   </main>
-  <script src="paint.js?v=21"></script>
+  <script src="paint.js?v=22"></script>
 </body>
 </html>
