@@ -3,12 +3,12 @@
 // zoom, fill, pick colors, undo (Ctrl+Z), minimize and close.
 (function () {
   var COLORS = ["#000000", "#808080", "#800000", "#808000", "#008000", "#008080", "#000080",
-    "#800080", "#808040", "#004040", "#0080ff", "#004080", "#8000ff", "#804000",
+    "#800080", "#657a62", "#004040", "#0080ff", "#004080", "#8000ff", "#804000",
     "#ffffff", "#c0c0c0", "#ff0000", "#ffff00", "#00ff00", "#00ffff", "#0000ff",
     "#ff00ff", "#ffff80", "#00ff80", "#80ffff", "#8080ff", "#ff0080", "#ff8040"];
   var TOOLS = [
-    ["freeselect", "✂", "Free-Form Select: browse the page normally."],
-    ["select", "⬚", "Select: browse the page normally."],
+    ["freeselect", "✂", "Free-Form Select: browse the page. Click a color to repaint the page."],
+    ["select", "⬚", "Select: browse the page. Click a color to repaint the page."],
     ["eraser", "⌫", "Eraser: drag to erase your drawing."],
     ["fill", "🪣", "Fill With Color: fill a shape, or click empty paper to recolor it."],
     ["pick", "💉", "Pick Color: click anything to grab its color."],
@@ -148,7 +148,17 @@
     state[which] = c;
     showColors();
     if (which === "fg" && hasSelection()) styleSelection("foreColor", c);
+    else if (which === "fg" && (state.tool === "select" || state.tool === "freeselect")) setAccent(c, true);
   }
+
+  // ----- page accent color (headings, rules, tags); starts green, palette can change it -----
+  var LIGHT = { "#ffffff": 1, "#c0c0c0": 1, "#ffff00": 1, "#ffff80": 1, "#00ffff": 1, "#80ffff": 1, "#00ff00": 1, "#00ff80": 1 };
+  function setAccent(c, remember) {
+    if (LIGHT[c]) return;
+    document.documentElement.style.setProperty("--ink", c);
+    if (remember) { try { localStorage.setItem("accent", c); } catch (err) {} }
+  }
+  try { var savedAccent = localStorage.getItem("accent"); if (savedAccent) setAccent(savedAccent); } catch (err) {}
   swatches.addEventListener("click", function (e) { pickSwatch(e, "fg"); });
   swatches.addEventListener("contextmenu", function (e) { pickSwatch(e, "bg"); });
 
