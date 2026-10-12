@@ -2,11 +2,6 @@
 // toolbox work: you can draw on top of the page, highlight and recolor text,
 // zoom, fill, pick colors, undo (Ctrl+Z), minimize and close.
 (function () {
-  var LINKS = {
-    linkedin: "https://www.linkedin.com/in/tairanhabib",
-    twitter: "https://x.com/tairanhabib",
-    github: "https://github.com/tairanhabib"
-  };
   var COLORS = ["#000000", "#808080", "#800000", "#808000", "#008000", "#008080", "#000080",
     "#800080", "#808040", "#004040", "#0080ff", "#004080", "#8000ff", "#804000",
     "#ffffff", "#c0c0c0", "#ff0000", "#ffff00", "#00ff00", "#00ffff", "#0000ff",
@@ -49,10 +44,6 @@
     '<nav class="menubar">' +
       nav("index.html", "About", "about") +
       nav("projects.html", "Projects", "projects") +
-      nav(LINKS.linkedin, "LinkedIn") +
-      nav(LINKS.twitter, "Twitter") +
-      nav(LINKS.github, "GitHub") +
-      nav("mailto:thabib@mit.edu", "Email") +
       '<span class="spacer"></span><button data-act="clear">Clear Image</button>' +
     "</nav>" +
     '<div class="workspace"><div class="toolbox">' +
