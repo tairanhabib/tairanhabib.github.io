@@ -46,7 +46,7 @@
       nav("experience.html", "Experience", "experience") +
       nav("projects.html", "Projects", "projects") +
       nav("draw.html", "Doodle", "draw") +
-      '<span class="spacer"></span>' + (page === "draw" ? '<button data-act="save">Save Image</button>' : "") + '<button data-act="clear">Clear Image</button>' +
+      '<span class="spacer"></span>' + (page === "draw" ? '<button data-act="save" title="Download your doodle as a PNG">Save Image</button>' : "") + '<button data-act="clear" title="Erase everything drawn on this page">Erase Drawing</button>' +
     "</nav>" +
     '<div class="workspace"><div class="toolbox">' +
       TOOLS.map(function (t) { return '<button data-tool="' + t[0] + '" title="' + t[2].split(":")[0] + '">' + t[1] + "</button>"; }).join("") +
@@ -167,9 +167,17 @@
   }
 
   // ----- page accent color (headings, rules, tags); starts green, palette can change it -----
-  var LIGHT = { "#ffffff": 1, "#c0c0c0": 1, "#ffff00": 1, "#ffff80": 1, "#00ffff": 1, "#80ffff": 1, "#00ff00": 1, "#00ff80": 1 };
+  // only accept colors that stay readable as heading text on white (WCAG 3:1 for large text)
+  function contrastOnWhite(hex) {
+    var n = parseInt(hex.slice(1), 16);
+    var lum = [n >> 16, (n >> 8) & 255, n & 255].map(function (v) {
+      v /= 255; return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    });
+    var L = 0.2126 * lum[0] + 0.7152 * lum[1] + 0.0722 * lum[2];
+    return 1.05 / (L + 0.05);
+  }
   function setAccent(c, remember) {
-    if (LIGHT[c]) return;
+    if (contrastOnWhite(c) < 3) { hint.textContent = "That color is too light to read on white. Try a darker one."; return; }
     document.documentElement.style.setProperty("--ink", c);
     if (remember) { try { localStorage.setItem("accent", c); } catch (err) {} }
   }
@@ -454,6 +462,10 @@
     a.download = "untitled.png";
     a.href = out.toDataURL("image/png");
     a.click();
+  });
+  win.querySelectorAll(".menubar button").forEach(function (b) {
+    b.addEventListener("mouseenter", function () { hint.dataset.prev = hint.textContent; hint.textContent = b.title; });
+    b.addEventListener("mouseleave", function () { if (hint.dataset.prev) hint.textContent = hint.dataset.prev; });
   });
   win.querySelector('[data-act="clear"]').addEventListener("click", function () {
     save();

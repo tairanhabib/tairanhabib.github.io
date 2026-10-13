@@ -346,3 +346,29 @@ ul.tags li { border: 2px solid var(--ink); padding: 4px 14px; font-size: 16px; }
 .page-projects .info .meta { align-items: baseline; }
 .page-projects .item > a.shot img { display: block; width: 100%; height: auto; }
 .page-projects .item > a.shot { cursor: zoom-in; }
+
+/* project tags: each tag is its own box, so lines never end on a dangling "·" */
+ul.chips { list-style: none; padding: 0; margin: 4px 0 10px; display: flex; flex-wrap: wrap; gap: 6px; }
+ul.chips li {
+  font: 13px Tahoma, sans-serif;
+  color: #333;
+  background: #eee;
+  border: 1px solid #ccc;
+  padding: 1px 8px;
+  white-space: nowrap;
+}
+ul.chips li.wip { background: #fff; border-color: var(--ink); color: var(--ink); }
+.result { margin-top: 8px !important; }
+.result b { color: var(--ink); }
+.page-projects .item { scroll-margin-top: 16px; }
+
+@media (max-width: 640px) {
+  /* dates always on their own line under the title */
+  .meta { flex-direction: column; gap: 0; }
+  .meta .date { margin-bottom: 2px; }
+  /* smaller photo so the name and intro show up first */
+  .intro .photo img { width: 150px !important; height: 150px !important; }
+  .intro .left { width: 100%; align-items: center; }
+  .intro .links { flex-wrap: wrap; justify-content: center; }
+  .intro .links .btn { flex: 0 0 auto; padding: 6px 14px; }
+}

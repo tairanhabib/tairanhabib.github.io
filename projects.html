@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Projects · Tairan Habib</title>
   <meta name="description" content="Projects by Tairan Habib: robotics, PCBs, web apps, and more.">
-  <link rel="stylesheet" href="style.css?v=23">
+  <link rel="stylesheet" href="style.css?v=25">
 </head>
 <body data-page="projects">
 
@@ -15,27 +15,29 @@
 
     <h2>Robotics &amp; Hardware</h2>
 
-    <div class="item">
+    <div class="item" id="forklift">
       <img class="shot" src="images/forklift.jpg" alt="Forklift teleoperation dashboard with live camera feeds and controls">
       <div class="info">
         <div class="meta"><h3>Forklift Teleoperation Retrofit</h3><span class="date">Summer 2026</span></div>
-        <div class="sub">KiCad · RP2040 · ROS 2 · WebRTC · C++ · Python</div>
+        <ul class="chips"><li>KiCad</li><li>RP2040</li><li>ROS 2</li><li>WebRTC</li><li>C++</li><li>Python</li></ul>
         <p>Remote control of a Raymond reach truck in Mexico City from Massachusetts without touching its controller. I designed a 2-layer control board with a watchdog-gated deadman relay, fail-safe relays, and isolated I/O, plus a multi-camera 1080p video pipeline and a heartbeat that stops the truck if the link degrades.</p>
+        <p class="result"><b>Result:</b> Rev-2 board passes design-rule and electrical-rule checks with zero violations. Traced 200–300 ms video lag to a cellular relay fallback against a 60–90 ms network floor.</p>
       </div>
     </div>
-    <div class="item">
+    <div class="item" id="big-crane">
       <iframe class="shot video" src="https://www.youtube-nocookie.com/embed/f1Jdj6F1KLM" title="Big Crane demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="info">
         <div class="meta"><h3>Big Crane</h3><span class="date">Dec 2025 – Aug 2026</span></div>
-        <div class="sub">C++ (Arduino) · Python · OpenCV · Pneumatics</div>
+        <ul class="chips"><li>C++ (Arduino)</li><li>Python</li><li>OpenCV</li><li>Pneumatics</li></ul>
         <p>A soft-robotics crane in the d'Arbeloff Lab. One Arduino Mega runs 5 closed-loop brushless motor channels and 6 pneumatic regulators at 100 Hz. Dual-camera vision tracks the vine-robot tip, and a controller that keeps re-learning how the motors move the tip (a Jacobian updated in real time) steers it.</p>
+        <p class="result"><b>Result:</b> Cut workspace calibration from 343 to 127 sweep points (about a third of the runtime), and fixed a sensor bug that capped readable speed at ~3,175 rpm, below the 3,470 rpm setpoint.</p>
       </div>
     </div>
-    <div class="item">
+    <div class="item" id="tactile-gripper">
       <img class="shot" src="images/tactile-gripper.jpg?v=2" alt="Two-finger tactile gripper prototype">
       <div class="info">
         <div class="meta"><h3>Tactile Gripper</h3><span class="date">Sep 2026 – now</span></div>
-        <div class="sub">In progress · Imitation learning · Compressive sensing · Teensy · C/C++ · Python</div>
+        <ul class="chips"><li class="wip">In progress</li><li>Imitation learning</li><li>Compressive sensing</li><li>Teensy</li><li>C/C++</li><li>Python</li></ul>
         <p>A two-finger tactile gripper I'm building for the robot arm in MIT CSAIL's Improbable AI Lab, as a platform for imitation learning with touch. People will demonstrate tasks with the gripper, and those demonstrations will train policies that use both touch and vision, so the robot can learn things like fast pick-and-place and tool use. Compressive sensing lets it read a large tactile array with far fewer measurements than sensors.</p>
       </div>
     </div>
@@ -43,7 +45,7 @@
       <img class="shot" src="images/robot-arm.jpg" alt="EEZYbotARM MK2 robot arm on a desk">
       <div class="info">
         <div class="meta"><h3>EEZYbotARM MK2</h3><span class="date">2026</span></div>
-        <div class="sub">Arduino · Python · 3D printing</div>
+        <ul class="chips"><li>Arduino</li><li>Python</li><li>3D printing</li></ul>
         <p>A 4-axis servo-driven robot arm with gripper, built and iterated on my own printers.</p>
       </div>
     </div>
@@ -51,7 +53,7 @@
       <img class="shot" src="images/cad.jpg?v=3" alt="3D render of a printable blow-dryer diffuser: full assembly and cutaway">
       <div class="info">
         <div class="meta"><h3>Parametric CAD Designs</h3><span class="date">2026</span></div>
-        <div class="sub">OpenSCAD · CadQuery · PETG/ASA</div>
+        <ul class="chips"><li>OpenSCAD</li><li>CadQuery</li><li>PETG/ASA</li></ul>
         <p>Code-defined printable parts: a blow-dryer diffuser, a snap-lid watercolor palette, and a tin organizer insert.</p>
       </div>
     </div>
@@ -59,7 +61,7 @@
       <iframe class="shot video" src="https://www.youtube-nocookie.com/embed/xrSj3NXKeoI" title="Plant Health Monitor demo video" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
       <div class="info">
         <div class="meta"><h3>Plant Health Monitor</h3><span class="date">2021</span></div>
-        <div class="sub">Arduino · C/C++ · Sensors</div>
+        <ul class="chips"><li>Arduino</li><li>C/C++</li><li>Sensors</li></ul>
         <p>My first embedded project: soil-moisture, light, and temperature sensors watching a plant's conditions, with all the code written from scratch. It's where I first learned to tie hardware and software together.</p>
       </div>
     </div>
@@ -69,7 +71,7 @@
       <img class="shot" src="images/neurobridge.jpg" alt="NeuroBridge clinical language dashboard">
       <div class="info">
         <div class="meta"><h3>NeuroBridge</h3><span class="date">May 2026</span></div>
-        <div class="sub">React · Vite · Tailwind CSS · Claude API · Web Speech API</div>
+        <ul class="chips"><li>React</li><li>Vite</li><li>Tailwind CSS</li><li>Claude API</li><li>Web Speech API</li></ul>
         <p>A clinical language workspace for immigrant dementia care. It transcribes live speech in English, Spanish, or Bengali and uses Claude to produce an English translation, flag dementia markers like anomia and code-switching, and infer a 1–10 stress score. A hard-coded crisis override tells clinicians to switch to a human protocol when distress is high. <a href="https://github.com/tairanhabib/neurobridge-dashbaord">Code</a></p>
       </div>
     </div>
@@ -77,7 +79,7 @@
       <img class="shot" src="images/burgered-bike.jpg" alt="Burgered Bike">
       <div class="info">
         <div class="meta"><h3>Burgered Bike</h3><span class="date">Jun 2026</span></div>
-        <div class="sub">React · Vite · Supabase · Vercel</div>
+        <ul class="chips"><li>React</li><li>Vite</li><li>Supabase</li><li>Vercel</li></ul>
         <p>A public Boston art scavenger hunt with a live sighting map, badges, and QR-code submissions. <a href="https://burgered-bike.vercel.app" target="_blank" rel="noopener">Visit site</a> · <a href="https://github.com/tairanhabib/burgered-bike" target="_blank" rel="noopener">Code</a></p>
       </div>
     </div>
@@ -85,15 +87,16 @@
       <a class="shot zoomable" href="images/ai-assistant.jpg" target="_blank" rel="noopener" title="Open full size"><img src="images/ai-assistant.jpg" alt="System architecture diagram of the iMessage personal assistant"></a>
       <div class="info">
         <div class="meta"><h3>iMessage Personal Assistant</h3><span class="date">Sep 2026 – now</span></div>
-        <div class="sub">In progress · Python · MCP · Hermes Agent · Node · Ubuntu</div>
-        <p>One iMessage thread over my calendar, inbox, to-do list, news, and weather. A self-hosted agent talks to a custom MCP tool server I wrote in Python, with 24 tools for things like loading a whole syllabus into my task list or sending a morning brief. Composite tools cut the brief from 12 model calls to 2, so it all runs on free tiers for $0 a month.</p>
+        <ul class="chips"><li class="wip">In progress</li><li>Python</li><li>MCP</li><li>Hermes Agent</li><li>Node</li><li>Ubuntu</li></ul>
+        <p>One iMessage thread over my calendar, inbox, to-do list, news, and weather. A self-hosted agent talks to a custom MCP tool server I wrote in Python, with 24 tools for things like loading a whole syllabus into my task list or sending a morning brief. Composite tools let it run entirely on free tiers.</p>
+        <p class="result"><b>Result:</b> The morning brief went from 12 model calls to 2, and the whole system costs $0 a month.</p>
       </div>
     </div>
     <div class="item">
       <a class="shot zoomable" href="images/supplier-heatmap.jpg?v=2" target="_blank" rel="noopener" title="Open full size"><img src="images/supplier-heatmap.jpg?v=2" alt="Heatmap of supplier turnaround times by customer site, with anonymized names and values"></a>
       <div class="info">
         <div class="meta"><h3>Supplier Turnaround Heatmaps</h3><span class="date">Summer 2024</span></div>
-        <div class="sub">R · tidyverse · ggplot2 · Pratt &amp; Whitney</div>
+        <ul class="chips"><li>R</li><li>tidyverse</li><li>ggplot2</li><li>Pratt &amp; Whitney</li></ul>
         <p>Quartile-ranked heatmaps comparing how fast each supplier turns around repairs for each customer site, split by engine thrust class, so leadership could spot slow suppliers at a glance. Quartiles are ranked per site, so a supplier can be green for one customer and red for another. Shown with anonymized names and values.</p>
       </div>
     </div>
@@ -104,8 +107,9 @@
       <img class="shot" src="images/swiss-bar.jpg" alt="Wooden multi-grip Swiss bar loaded with weight plates">
       <div class="info">
         <div class="meta"><h3>Multi-Grip Swiss Bar</h3><span class="date">2021</span></div>
-        <div class="sub">Woodworking · PVC · Load testing</div>
-        <p>A custom multi-grip barbell with several neutral hand positions, designed for my dad, who has arthritis. Wood framing gives it structure and PVC inserts make the grips, and I stress-tested it well past normal use, up to about 240 lbs.</p>
+        <ul class="chips"><li>Woodworking</li><li>PVC</li><li>Load testing</li></ul>
+        <p>A custom multi-grip barbell with several neutral hand positions, designed for my dad, who has arthritis. Wood framing gives it structure and PVC inserts make the grips, and I stress-tested it well past normal use.</p>
+        <p class="result"><b>Result:</b> Held about 240 lbs in static and dynamic stress tests.</p>
       </div>
     </div>
 
@@ -114,11 +118,11 @@
     <div class="item">
       <div class="info">
         <div class="meta"><h3>Machine Learning Self-Study</h3><span class="date">2026 – now</span></div>
-        <div class="sub">PyTorch</div>
+        <ul class="chips"><li>PyTorch</li></ul>
         <p>Trained a CIFAR-10 classifier on an Apple GPU and working through micrograd and the robot-learning papers from RT-1 to OpenVLA.</p>
       </div>
     </div>
   </main>
-  <script src="paint.js?v=24"></script>
+  <script src="paint.js?v=25"></script>
 </body>
 </html>
