@@ -29,6 +29,7 @@
 
   var page = document.body.dataset.page;
   var file = page === "about" ? "tairan_habib.bmp" : page === "draw" ? "untitled.bmp" : page + ".bmp";
+  var drawn = false;
   var main = document.querySelector("main");
 
   function nav(href, label, key) {
@@ -46,7 +47,7 @@
       nav("experience.html", "Experience", "experience") +
       nav("projects.html", "Projects", "projects") +
       nav("draw.html", "Doodle", "draw") +
-      '<span class="spacer"></span>' + (page === "draw" ? '<button data-act="save" title="Download your doodle as a PNG">Save Image</button>' : "") + '<button data-act="clear" title="Erase everything drawn on this page">Erase Drawing</button>' +
+      '<span class="spacer"></span>' + (page === "draw" ? '<a href="gallery.html" title="See doodles other people sent in">Gallery</a><button data-act="submit" title="Send your doodle to the gallery (shows up after a quick review)">Submit</button><button data-act="save" title="Download your doodle as a PNG">Save Image</button>' : "") + '<button data-act="clear" title="Erase everything drawn on this page">Erase Drawing</button>' +
     "</nav>" +
     '<div class="workspace"><div class="toolbox">' +
       TOOLS.map(function (t) { return '<button data-tool="' + t[0] + '" title="' + t[2].split(":")[0] + '">' + t[1] + "</button>"; }).join("") +
@@ -115,6 +116,7 @@
   // ----- undo -----
   var undo = [];
   function save() {
+    drawn = true;
     undo.push({ img: ctx.getImageData(0, 0, layer.width, layer.height), paper: main.style.background });
     if (undo.length > UNDO_MAX) undo.shift();
   }
@@ -451,13 +453,25 @@
     }
   });
   var saveBtn = win.querySelector('[data-act="save"]');
-  if (saveBtn) saveBtn.addEventListener("click", function () {
+  // the drawing flattened onto its paper color, scaled down to at most maxW pixels wide
+  function flatten(maxW) {
+    var s = Math.min(1, (maxW || Infinity) / layer.width);
     var out = document.createElement("canvas");
-    out.width = layer.width; out.height = layer.height;
+    out.width = Math.round(layer.width * s); out.height = Math.round(layer.height * s);
     var o = out.getContext("2d");
     o.fillStyle = getComputedStyle(main).backgroundColor || "#ffffff";
     o.fillRect(0, 0, out.width, out.height);
-    o.drawImage(layer, 0, 0);
+    o.drawImage(layer, 0, 0, out.width, out.height);
+    return out;
+  }
+  window.Paint = {
+    flatten: flatten,
+    isBlank: function () { return !drawn || !layer.width; },
+    say: function (msg) { hint.textContent = msg; },
+    window: win
+  };
+  if (saveBtn) saveBtn.addEventListener("click", function () {
+    var out = flatten();
     var a = document.createElement("a");
     a.download = "untitled.png";
     a.href = out.toDataURL("image/png");
@@ -470,6 +484,7 @@
   win.querySelector('[data-act="clear"]').addEventListener("click", function () {
     save();
     ctx.clearRect(0, 0, layer.width, layer.height);
+    drawn = false;
     main.style.background = "";
     main.style.zoom = state.zoom = 1;
   });

@@ -372,3 +372,31 @@ ul.chips li.wip { background: #fff; border-color: var(--ink); color: var(--ink);
   .intro .links { flex-wrap: wrap; justify-content: center; }
   .intro .links .btn { flex: 0 0 auto; padding: 6px 14px; }
 }
+
+/* doodle gallery */
+.gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); gap: 18px; margin-top: 24px; }
+.gallery figure { margin: 0; border: 1px dashed #000; padding: 6px; background: #fff; }
+.gallery img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: contain; background: #fff; }
+.gallery figcaption { font: 13px Tahoma, sans-serif; color: #555; margin-top: 6px; text-align: center; }
+
+/* Win98-style dialog */
+.dialog-shade { position: fixed; inset: 0; background: rgba(0, 0, 0, 0.25); display: flex; align-items: center; justify-content: center; z-index: 10; padding: 16px; }
+.dialog {
+  background: var(--face);
+  border: 2px solid;
+  border-color: var(--hi) var(--dark) var(--dark) var(--hi);
+  padding: 3px;
+  width: 100%;
+  max-width: 360px;
+  font: 13px Tahoma, sans-serif;
+}
+.dialog-body { padding: 14px 12px 4px; }
+.dialog-body p { margin: 0 0 12px; }
+.dialog-body input {
+  width: 100%; margin-top: 4px; padding: 4px 6px; font: 13px Tahoma, sans-serif;
+  border: 2px solid; border-color: var(--shadow) var(--hi) var(--hi) var(--shadow); background: #fff;
+}
+.dialog-error { color: #b00020; min-height: 1em; }
+.dialog-buttons { display: flex; justify-content: flex-end; gap: 8px; padding: 6px 12px 12px; }
+.dialog-buttons .btn { min-width: 76px; cursor: pointer; }
+.dialog .titlebar .controls button { cursor: pointer; }
